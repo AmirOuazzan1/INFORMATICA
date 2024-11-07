@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #out1 {
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            background-color: rgb(237, 237, 237);
+        }
+    </style>
+</head>
+<body>
+    <h1>La mia prima pagina JavaScript</h1>
+    <p id="demo"></p>
+    <div id="out1">
+        <p>Stampa un countdown da 10 a 0</p>
+        <button onclick="stampaNumeri()">Avvia funziona</button>
+    </div>
+    <div id="out2"></div>
+    <div id="out3"></div>
+    <div id="out4"></div>
+    <button onclick="stampa()">Avvia funziona</button>
+
+    <script>
+        let contatore = 0;
+        const element = document.getElementById("demo");
+        const temp1 = setInterval(stampaCIAO, 1000);
+        
+        function stampaCIAO() {
+            contatore++;
+            element.innerHTML += contatore + " ";
+            if (contatore == 10)
+                clearInterval(temp1);
+        }
+
+        function stampa() {
+            alert("test bottone + funzione");
+            document.getElementById("out1").innerHTML = "COUNTDOWN";
+        }
+
+        function stampaNumeri() {
+            let risultato = "";
+            for (let i = 10; i >= 0; i--) {
+                risultato += " " + i;
+            }
+            document.getElementById("out1").innerHTML = risultato;
+        }
+    </script>
+
+</body>
+</html>

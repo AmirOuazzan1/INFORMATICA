@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>esercizi con button e for</title>
+  <style>
+    /* Stile generale per i div */
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    /* Stili per i pulsanti */
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      color: white;
+      margin: 10px;
+      border-radius: 5px;
+    }
+
+    .red-button { background-color: #e74c3c; }
+    .blue-button { background-color: #3498db; }
+    .yellow-button { background-color: #f1c40f; color: black; }
+    .green-button { background-color: #2ecc71; }
+
+    /* Stile per il risultato */
+    .result {
+      margin-top: 10px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Esercizi con i pulsanti</h1>
+
+  <div class="container">
+    <div>
+      <button class="red-button" onclick="stampa('result1', 1, 1, 100)">Stampa Numeri 1-100</button>
+      <div id="result1" class="result"></div>
+    </div>
+
+    <div>
+      <button class="blue-button" onclick="stampa('result2', 2, 2, 100)">Stampa Numeri Pari</button>
+      <div id="result2" class="result"></div>
+    </div>
+
+    <div>
+      <button class="yellow-button" onclick="stampa('result3', 9, 9, 1000)">Stampa Tabellina del 9</button>
+      <div id="result3" class="result"></div>
+    </div>
+
+    <div>
+      <button class="green-button" onclick="stampaNumeriCasuali('result4')">Stampa Numeri Casuali</button>
+      <div id="result4" class="result"></div>
+    </div>
+  </div>
+
+  <script>
+    function stampa(id, start, step, max) {
+      let risultato = '';
+      for (let i = start; i <= max; i += step) {
+        risultato += i + ' ';
+      }
+      document.getElementById(id).innerText = risultato;
+    }
+
+    function stampaNumeriCasuali(id) {
+      let risultato = '';
+      for (let i = 0; i < 10; i++) {
+        risultato += Math.floor(Math.random() * 90) + 1 + ' ';
+      }
+      document.getElementById(id).innerText = risultato;
+    }
+  </script>
+
+</body>
+</html>

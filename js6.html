@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js6</title>
+
+    <style>
+        #out1 {
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            background-color: rgb(60, 111, 121);
+        }
+    </style>
+</head>
+<body>
+    <i><h1>COMPITO JS6</h1></i>
+
+    <p id="demo"></p>
+
+    <div id="out1">
+        <p>Contatore decrementale da 50.00 a 0.00</p>
+        <button onclick="startCountdown()">Inizia il conteggio</button>
+        <button onclick="printCurrentTime()">Stampa tempo attuale</button>
+    </div>
+    <div id="out2"></div>
+    
+    <script>
+        
+         window.onload = function() {
+            let person = prompt("Inserisci il nome");
+            if (person != null) {
+                document.getElementById("demo").innerHTML =
+                "Ciao " + person;
+            }
+        }
+        
+        let counter = 50.00;
+        let interval;
+        const optimalTimes = [50, 40, 30, 20, 10, 0];
+
+        function startCountdown() {
+            const element = document.getElementById("demo");
+            interval = setInterval(() => {
+                element.innerHTML = counter.toFixed(2);
+                counter -= 0.01;
+                if (counter <= 0) {
+                    clearInterval(interval);
+                    element.innerHTML = "0.00";
+                }
+            }, 5);
+        }
+
+        function printCurrentTime() {
+            const currentTimeElement = document.getElementById("out2");
+
+            const closestOptimalTime = optimalTimes.reduce((prev, curr) => {
+                return (Math.abs(curr - counter) < Math.abs(prev - counter) ? curr : prev);
+            });
+
+            const timeDifference = (closestOptimalTime - counter).toFixed(2);
+            
+            currentTimeElement.innerHTML += `Tempo attuale del contatore: ${counter.toFixed(2)} secondi, Differenza dal tempo ottimale (${closestOptimalTime}): ${timeDifference} secondi<br>`;
+        }
+    </script>
+</body>
+</html>

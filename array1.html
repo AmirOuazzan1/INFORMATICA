@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morra Cinese - Giocatore vs Computer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            padding: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gioco Morra - Giocatore vs Computer</h1>
+        <p>Prima scelta un'opzione:</p>
+        <button onclick="playGame('sasso')">Sasso</button>
+        <button onclick="playGame('mano')">Mano</button>
+        <button onclick="playGame('forbice')">Forbice</button>
+        <div class="results">
+            <p id="out1"></p>
+            <p id="result"></p>
+            <p id="score"></p>
+        </div>
+    </div>
+
+    <script>
+        const arrymorra = ["sasso", "mano", "forbice"];
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function numeroCasuale() {
+            return Math.floor(Math.random() * 3); // Restituisce un numero tra 0 e 2
+        }
+
+        function playGame(playerChoice) {
+            let computerChoice = arrymorra[numeroCasuale()];
+            document.getElementById("out1").innerHTML = `Giocatore: ${playerChoice} - Computer: ${computerChoice}`;
+
+            let result = "";
+            if (playerChoice === computerChoice) {
+                result = "Pareggio!";
+            } else if (
+                (playerChoice === "sasso" && computerChoice === "forbice") ||
+                (playerChoice === "mano" && computerChoice === "sasso") ||
+                (playerChoice === "forbice" && computerChoice === "mano")
+            ) {
+                result = "Hai vinto!";
+                playerScore++;
+            } else {
+                result = "Hai perso!";
+                computerScore++;
+            }
+
+            document.getElementById("result").innerHTML = result;
+            document.getElementById("score").innerHTML = `Punteggio - Giocatore: ${playerScore} | Computer: ${computerScore}`;
+
+            if (playerScore === 3 || computerScore === 3) {
+                if (playerScore === 3) {
+                    alert("Complimenti! Hai vinto la partita!");
+                } else {
+                    alert("Peccato! Il computer ha vinto la partita!");
+                }
+                resetGame();
+            }
+        }
+
+        function resetGame() {
+            playerScore = 0;
+            computerScore = 0;
+            document.getElementById("out1").innerHTML = "";
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("score").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

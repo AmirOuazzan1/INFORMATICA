@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeri Casuali</title>
+</head>
+<body>
+    <h1>Numeri Casuali</h1>
+    <button onclick="aggiungiNumero()">Aggiungi Numero</button>
+    <button onclick="rimuoviNumero()">Rimuovi Numero</button>
+    <ul id="listaNumeri"></ul>
+
+    <script>
+        let numeri = [];
+
+        function aggiungiNumero() {
+            numeri.push(Math.floor(Math.random() * 100) + 1);
+            aggiornaLista();
+        }
+
+        function rimuoviNumero() {
+            numeri.pop();
+            aggiornaLista();
+        }
+
+        function aggiornaLista() {
+            document.getElementById("listaNumeri").innerHTML = numeri.map(n => `<li>${n}</li>`).join('');
+        }
+    </script>
+</body>
+</html>

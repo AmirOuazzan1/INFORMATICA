@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisi Numerica con Array</title>
+</head>
+<body>
+
+    <h1>Analisi Numerica con Array</h1>
+    <p>Lista generata:</p>
+    <p id="out1"></p>
+    <script>
+        // array visibile a tutto lo script
+        let numeri = [];
+        // il numero casuale viene inserito nell'array in posizione i;
+        function InserisceNumeroCasuale(i) {    
+            let NumeroCausale = Math.floor(Math.random() * 100);
+            numeri[i] = NumeroCausale;    
+        }
+        // ciclo per inserire 100 numeri casuali nell'array
+        for (let i = 0; i < 1000; i++) {
+            InserisceNumeroCasuale(i);
+        }
+        // mostra l'array nell'elemento con id 'out1'
+        document.getElementById("out1").innerHTML = numeri;
+
+        function isPrime(n) {  
+            let prime = true;
+            for (let i = 2; i <= (n / 2); i++) {
+                if ((n % i) == 0) { prime = false; }
+            }
+            return prime;
+        }
+
+        console.log(isPrime(11));
+    </script>
+
+</body>
+</html>

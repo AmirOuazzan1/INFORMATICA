@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeri Primi da 1 a 1000</title>
+</head>
+<body>
+
+    <h1>Numeri Primi da 1 a 1000</h1>
+    <p id="out1"></p>
+    <script>
+        function isPrime(n) {  
+            if (n <= 1) return false;  
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        let primeNumbers = [];
+        for (let i = 1; i <= 1000; i++) {
+            if (isPrime(i)) {
+                primeNumbers.push(i);
+            }
+        }
+
+        document.getElementById("out1").innerHTML = primeNumbers.join(', ');
+    </script>
+
+</body>
+</html>

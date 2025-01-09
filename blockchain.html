@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain</title>
+    <style>
+        body {
+            background-color: rgb(183, 183, 183);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: rgb(183, 183, 183);
+            color: black;
+            text-align: center;
+            width: 100%;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        main {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 80%;
+            padding: 20px;
+            margin-top: 60px; /* Aggiungi margine superiore per evitare la sovrapposizione con l'header */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: left;
+            width: 100%;
+        }
+
+        p {
+            margin: 10px 0;
+            text-align: left;
+            width: 100%;
+            font-size: 1.2em;
+        }
+
+        ul {
+            padding-left: 20px;
+            text-align: left;
+            width: 100%;
+            font-size: 1.2em;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blockchain</h1>
+    </header>
+    <main>
+        <h2><b>1. Cos'è la blockchain?</b></h2>
+        <p>La blockchain è un registro digitale distribuito che registra le transazioni in modo sicuro e immutabile.</p>
+        <p>Immagina un libro contabile digitale che viene condiviso tra diversi partecipanti (nodi) di una rete.</p>
+        <p>Ogni transazione viene registrata in un blocco e aggiunta a una catena di blocchi, da cui il termine "blockchain".</p>
+        <p>Questo registro è pubblico e visibile a tutti i partecipanti, il che assicura trasparenza.</p>
+        <h2><b>2. Come funziona?</b></h2>
+        <p>Ogni blocco della blockchain contiene:</p>
+        <ul>
+            <li>Dati delle transazioni</li>
+            <li>Un timestamp (data e ora)</li>
+            <li>L'hash crittografico del blocco precedente</li>
+        </ul>
+        <p>L'hash è una stringa unica di caratteri generata da una funzione crittografica che rappresenta i dati del blocco.</p>
+        <p>Quando un nuovo blocco viene aggiunto, viene collegato al blocco precedente tramite il suo hash, formando una catena ininterrotta.</p>
+        <p>Questo rende la blockchain altamente sicura perché modificare un blocco richiederebbe la modifica di tutti i blocchi successivi.</p>
+        <h2><b>3. Sicurezza</b></h2>
+        <p>La sicurezza della blockchain è garantita da diverse caratteristiche:</p>
+        <ul>
+            <li><b>Immutabilità:</b> Una volta che una transazione è registrata, non può essere modificata o cancellata.</li>
+            <li><b>Distribuzione:</b> Il registro è condiviso tra molti nodi, quindi non esiste un singolo punto di fallimento.</li>
+            <li><b>Consenso:</b> Le nuove transazioni devono essere verificate e approvate dalla maggioranza dei nodi (consenso) prima di essere aggiunte alla blockchain.</li>
+        </ul>
+        <h2><b>4. Esempio pratico</b></h2>
+        <p>Immagina un esempio pratico di utilizzo della blockchain nel settore logistico.</p>
+        <p>Quando un prodotto viene spedito, ogni fase del viaggio (partenza, transito, arrivo) viene registrata in blocchi.</p>
+        <p>Chiunque partecipi alla rete può verificare l'integrità e la provenienza del prodotto controllando la blockchain.</p>
+        <h2><b>5. Bitcoin e criptovalute</b></h2>
+        <p>La blockchain è la tecnologia sottostante a Bitcoin, la prima e più famosa criptovaluta.</p>
+        <p>Bitcoin utilizza la blockchain per registrare tutte le transazioni, garantendo che ogni bitcoin speso non possa essere speso di nuovo (problema del doppio-spesa).</p>
+        <p>Altre criptovalute, come Ethereum, utilizzano la blockchain per eseguire contratti intelligenti oltre a registrare transazioni.</p>
+        <h2><b>6. Invenzione della blockchain</b></h2>
+        <p>La blockchain è stata inventata nel 2008 da una persona (o gruppo di persone) sotto lo pseudonimo di Satoshi Nakamoto.</p>
+        <p>È stata implementata per la prima volta nel 2009 come componente principale di Bitcoin.</p>
+        <p>L'invenzione della blockchain è stata una svolta nella tecnologia dei registri distribuiti, permettendo la creazione di sistemi finanziari decentralizzati.</p>
+        <h2><b>7. Proof of Work (PoW)</b></h2>
+        <p>Proof of Work è un meccanismo di consenso che consente di raggiungere un accordo su un'unica cronologia della blockchain senza bisogno di un'autorità centrale.</p>
+        <p>È stato introdotto con Bitcoin e rimane uno dei meccanismi di consenso più utilizzati nelle criptovalute.</p>
+        <p><h2>Come funziona?</h2></p>
+        <p><b>Risoluzione di Problemi Complessi:</b> I "miner" competono per risolvere complessi problemi matematici, noti come "puzzle crittografici".</p>
+        <p>Questi problemi richiedono una grande potenza computazionale per essere risolti.</p>
+        <p><b>Validazione:</b> Una volta che un miner risolve il puzzle, trasmette la soluzione alla rete.</p>
+        <p>Altri nodi verificano la correttezza della soluzione.</p>
+        <p><b>Aggiunta del Blocco:</b> Se la soluzione è corretta, il nuovo blocco viene aggiunto alla blockchain e il miner</p>
+        <p>che ha risolto il puzzle riceve una ricompensa sotto forma di criptovaluta (ad esempio, Bitcoin).</p>
+        <p><b>Sicurezza:</b> La difficoltà del problema matematico viene regolata in modo tale che i blocchi vengano aggiunti a intervalli di tempo regolari.</p>
+        <p>Modificare un blocco richiederebbe il rifacimento di tutto il lavoro (Proof of Work) per quel blocco e per tutti quelli successivi, rendendo così la blockchain estremamente sicura.</p>
+        <p><h2>Vantaggi</h2></p>
+        <p><b>Decentralizzazione:</b> PoW non richiede una fiducia centralizzata. Chiunque può partecipare al mining.</p>
+        <p><b>Sicurezza:</b> L'alto costo computazionale rebde ke attività fraudolente poco praticabili</p>
+        <p><h2>Svantaggi</h2></p>
+        <p><b>Consumo Energetico:</b> PoW richiede una grande quantità di energia, che può avere impatti ambientali.</p>
+        <p><b>Centralizzazione del Mining:</b> Nonostante la sua natura decentralizzata, il mining è spesso dominato da grandi pool di mining con risorse significative.</p>
+        <p><h2>Utilizzo</h2></p>
+        <p>Il Proof of Work è utilizzato da molte criptovalute oltre a Bitcoin, come Litecoin e Dogecoin.</p>
+        <p>Tuttavia, alcuni nuovi progetti blockchain stanno esplorando meccanismi di consenso alternativi, come il Proof of Stake (PoS), che è meno energivoro.</p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test JavaScript</title>
+</head>
+<body>
+    <h1>Visualizzazione del Codice JavaScript</h1>
+
+    <script src="Post.js"></script>
+</body>
+</html>
+class Post {
+    constructor(id, author, type, data, nickname, link, message, numberOkLike, media) {
+        this.id = id;
+        this.author = author;
+        this.type = type;
+        this.data = data;
+        this.nickname = nickname;
+        this.link = link;
+        this.message = message;
+        this.numberOkLike = numberOkLike;
+        this.media = media;
+    }
+
+    newPost(newData) {
+        Object.assign(this, newData);
+    }
+
+    update(updatedData) {
+        Object.assign(this, updatedData);
+    }
+
+    edit(newMessage) {
+        this.message = newMessage;
+    }
+
+    commit() {
+        console.log("Post salvato:", this);
+    }
+}
+
+class Comment extends Post {
+    constructor(id, author, data, nickname, link, message, numberOkLike, media, parentPostId) {
+        super(id, author, "comment", data, nickname, link, message, numberOkLike, media);
+        this.parentPostId = parentPostId;
+    }
+}

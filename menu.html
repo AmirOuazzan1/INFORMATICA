@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Menu</title>
+  <style>
+    /* Reset di base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Sfondo della pagina */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #3d5a73;
+      color: #333;
+      padding: 20px;
+    }
+
+    /* Contenitore principale del menù */
+    .menu-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* Immagine del cuoco: float a destra */
+    .chef-image {
+      float: right;
+      width: 120px;
+      height: auto;
+      margin: 0 0 20px 20px;
+    }
+
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 15px;
+    }
+
+    .intro-text {
+      font-size: 1em;
+      line-height: 1.5em;
+      margin-bottom: 25px;
+      max-width: 100%;
+    }
+
+    .section-title {
+      font-size: 1.6em;
+      margin: 40px 0 15px 0;
+      text-transform: uppercase;
+      border-bottom: 2px solid #333;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .menu-list {
+      margin-top: 15px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 12px 0;
+      font-size: 1.1em;
+    }
+
+    .menu-item-name {
+      flex: 1;
+      margin-right: 10px;
+      position: relative;
+    }
+
+    /* Rimosso il pseudo-elemento che creava i puntini */
+    /* .menu-item-name::after {
+      content: "................................................................";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 50%;
+      transform: translateY(50%);
+      color: #ccc;
+      overflow: hidden;
+      white-space: nowrap;
+    } */
+
+    .menu-item-name span {
+      position: relative;
+      background: #fff;
+      padding-right: 5px;
+    }
+
+    .menu-item-price {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    .price {
+      color: #555;
+    }
+    
+    .meal-total {
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    /* Responsività di base */
+    @media (max-width: 480px) {
+      .chef-image {
+        float: none;
+        display: block;
+        margin: 0 auto 20px auto;
+        width: 80px;
+      }
+      .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .menu-item-price {
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-container">
+    <!-- Immagine del cuoco -->
+    <img src="https://amirouazzan1.github.io/INFORMATICA/chef.jpg" alt="Chef con pizza" class="chef-image">
+
+    <!-- Titolo del ristorante -->
+    <h1>Restaurant Menu</h1>
+    
+    <!-- Testo introduttivo -->
+    <p class="intro-text">
+      Benvenuti all'Hotel Villa del Golfo! Siamo lieti di offrirvi una selezione di piatti deliziosi,
+      preparati con ingredienti freschissimi. Godetevi le nostre prelibatezze di mare e la cucina
+      tradizionale italiana, il tutto servito con un tocco di eleganza e ospitalità. Buon Appetito!
+    </p>
+
+    <!-- Sezione COLAZIONE -->
+    <h2 class="section-title">COLAZIONE</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="menu-item-name"><span>Yogurt artigianale con miele e granella di noci</span></div>
+        <div class="menu-item-price price">€4.50</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-name"><span>Succo d’arancia rossa di Sicilia</span></div>
+        <div class="menu-item-price price">€3.50</div>
+      </div>
+    </div>
+    <p class="meal-total">Totale Colazione: €8.00</p>
+
+    <!-- Sezione PRANZO -->
+    <h2 class="section-title">PRANZO</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="menu-item-name"><span>Scialatielli integrali con pomodorini, olive e capperi</span></div>
+        <div class="menu-item-price price">€11.00</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-name"><span>Spigola all’acqua pazza con scarola ripassata</span></div>
+        <div class="menu-item-price price">€13.00</div>
+      </div>
+    </div>
+    <p class="meal-total">Totale Pranzo: €24.00</p>
+
+    <!-- Sezione MERENDA -->
+    <h2 class="section-title">MERENDA</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="menu-item-name"><span>Granita di limone con mandorle</span></div>
+        <div class="menu-item-price price">€4.00</div>
+      </div>
+    </div>
+    <p class="meal-total">Totale Merenda: €4.00</p>
+
+    <!-- Sezione CENA -->
+    <h2 class="section-title">CENA</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="menu-item-name"><span>Paccheri con ragù di pesce spada e pomodorini</span></div>
+        <div class="menu-item-price price">€12.00</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-name"><span>Polpo alla luciana con pane tostato</span></div>
+        <div class="menu-item-price price">€14.00</div>
+      </div>
+    </div>
+    <p class="meal-total">Totale Cena: €26.00</p>
+  </div>
+</body>
+</html>

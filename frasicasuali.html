@@ -28,15 +28,11 @@
               </div>
               <div class="mb-3">
                 <label class="form-label">Visibilità</label>
-                <div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="visibility" id="publicGet" value="pubblico" checked>
-                    <label class="form-check-label" for="publicGet">Pubblico</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="visibility" id="privateGet" value="privato">
-                    <label class="form-check-label" for="privateGet">Privato</label>
-                  </div>
+                <div class="btn-group" role="group">
+                  <input type="radio" class="btn-check" name="visibility" id="publicGet" value="pubblico" autocomplete="off" checked>
+                  <label class="btn btn-outline-primary" for="publicGet">Pubblico</label>
+                  <input type="radio" class="btn-check" name="visibility" id="privateGet" value="privato" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="privateGet">Privato</label>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
@@ -63,15 +59,11 @@
               </div>
               <div class="mb-3">
                 <label class="form-label">Visibilità</label>
-                <div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="visibility" id="publicPost" value="pubblico" checked>
-                    <label class="form-check-label" for="publicPost">Pubblico</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="visibility" id="privatePost" value="privato">
-                    <label class="form-check-label" for="privatePost">Privato</label>
-                  </div>
+                <div class="btn-group" role="group">
+                  <input type="radio" class="btn-check" name="visibility" id="publicPost" value="pubblico" autocomplete="off" checked>
+                  <label class="btn btn-outline-primary" for="publicPost">Pubblico</label>
+                  <input type="radio" class="btn-check" name="visibility" id="privatePost" value="privato" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="privatePost">Privato</label>
                 </div>
               </div>
               <button type="submit" class="btn btn-secondary">Submit</button>

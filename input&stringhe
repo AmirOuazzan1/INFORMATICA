@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form e Funzioni JavaScript</title>
+<script>
+function aggiornaRisultati() {
+    const inputA = document.getElementById('inputA').value;
+    const inputB = document.getElementById('inputB').value;
+
+    document.getElementById('lunghezzaA').innerText = `Lunghezza Stringa A: ${inputA.length}`;
+    document.getElementById('lunghezzaB').innerText = `Lunghezza Stringa B: ${inputB.length}`;
+    document.getElementById('contrariaA').innerText = `Stringa A al contrario: ${[...inputA].reverse().join('')}`;
+    document.getElementById('contrariaB').innerText = `Stringa B al contrario: ${[...inputB].reverse().join('')}`;
+    document.getElementById('unione').innerText = `Stringa unita: ${inputA + inputB}`;
+    const lunghezzaTotale = inputA.length + inputB.length;
+    document.getElementById('somma').innerText = `Somma delle lunghezze: ${lunghezzaTotale}`;
+    document.getElementById('avviso').innerText = inputB.length > 20 ? "B troppo lunga!" : "";
+}
+</script>
+</head>
+<body>
+
+<h1>Form di input</h1>
+<form>
+    <label for="inputA">Stringa A:</label>
+    <input type="text" id="inputA" oninput="aggiornaRisultati();" /><br><br>
+
+    <label for="inputB">Stringa B:</label>
+    <input type="text" id="inputB" oninput="aggiornaRisultati();" />
+</form>
+
+<h2>Risultati</h2>
+<p id="lunghezzaA"></p>
+<p id="lunghezzaB"></p>
+<p id="contrariaA"></p>
+<p id="contrariaB"></p>
+<p id="unione"></p>
+<p id="somma"></p>
+<p id="avviso" style="color: red;"></p>
+
+</body>
+</html>

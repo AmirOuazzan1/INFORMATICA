@@ -1,71 +1,94 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Numeri Casuali</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        #output {
-            margin-top: 20px;
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-            white-space: pre-wrap;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numeri Casuali</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #output {
+      margin-top: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
 <body>
-    <h1>Generatore di Numeri Casuali</h1>
-    <label for="min">Min:</label>
-    <input type="number" id="min" value="1">
-    <label for="max">Max:</label>
-    <input type="number" id="max" value="100">
-    <button onclick="generaNumeri()">Genera</button>
-    <div id="output"></div>
+  <h1>Generatore di Numeri Casuali</h1>
+
+  <label for="min">Min:</label>
+  <input type="number" id="min" value="0">
+  <label for="max">Max:</label>
+  <input type="number" id="max" value="1">
+  <button onclick="generaNumeri()">Genera</button>
+  <div id="output"></div>
+  
+  <script>
+    function generaNumeri() {
    
-    <script>
-        function generaNumeri() {
-            const min = parseFloat(document.getElementById('min').value);
-            const max = parseFloat(document.getElementById('max').value);
-            if (isNaN(min) || isNaN(max) || min >= max) {
-                alert("Inserisci un intervallo valido.");
-                return;
-            }
+      const min = 0;
+      const max = 1;
+     
+      const mid = (max - min) / 2;  
 
-            // Array per contenere i numeri casuali
-            let numeri = [];
-            let output = "";
+  
+      let ArrayNumeriCasuali = [];
+    
+      let arrayRapporti = [];
+      let output = "";
+      let mediaPrimi50 = 0;
+      let countBlock = 0;
+      let totalCount = 0;
 
-            // Generazione di 10000 numeri casuali e calcolo della media dei primi 50 numeri
-            let mediaPrimi50 = 0;
-            for (let i = 0; i < 10000; i++) {
-                let numeroCasuale = Math.random() * (max - min) + min;  // Genera numeri reali
-                numeri.push(numeroCasuale);
-                output += numeroCasuale.toFixed(2) + " ";  // Aggiungi il numero alla stringa output con 2 decimali
 
-                if (i < 50) {
-                    mediaPrimi50 += numeroCasuale;  // Somma per calcolare la media dei primi 50 numeri
-                }
-
-                if (i % 50 === 49) {
-                    // Aggiungi la media dei primi 50 numeri alla fine della riga
-                    let media = mediaPrimi50 / 50;
-                    output += ` - Media dei primi 50 numeri: ${media.toFixed(2)}\n`;
-                    mediaPrimi50 = 0;  // Resetta la somma per i successivi 50 numeri
-                }
-            }
-
-            // Aggiungi la media totale dei primi 50 numeri in un altro array
-            let mediaArray = numeri.slice(0, 50).reduce((acc, val) => acc + val, 0) / 50;
-            output += `\n\nMedia dei primi 50 numeri: ${mediaArray.toFixed(2)}`;
-
-            document.getElementById('output').textContent = output;
+      let intervalId = setInterval(() => {
+        if (totalCount >= 10000) {
+          document.getElementById('output').textContent = output;
+          clearInterval(intervalId);
+          return;
         }
-    </script>
+        
+
+        const nuovoNumero = Math.random();
+        
+ 
+        ArrayNumeriCasuali.push(nuovoNumero);
+        
+     
+        if (ArrayNumeriCasuali.length > 1) {
+          let rapporto = nuovoNumero / ArrayNumeriCasuali[ArrayNumeriCasuali.length - 2];
+          arrayRapporti.push(rapporto);
+        }
+        
+
+        let distanza = Math.abs(nuovoNumero - mid);
+        
+
+        output += nuovoNumero.toFixed(2) + " (distanza: " + distanza.toFixed(2) + ") ";
+        
+
+        mediaPrimi50 += nuovoNumero;
+        countBlock++;
+        
+
+        if (countBlock === 50) {
+          let media = mediaPrimi50 / 50;
+          output += " - Media dei 50 numeri: " + media.toFixed(2) + "\n";
+
+          mediaPrimi50 = 0;
+          countBlock = 0;
+        }
+        
+        totalCount++;
+        document.getElementById('output').textContent = output;
+      }, 500);
+    }
+  </script>
 </body>
 </html>

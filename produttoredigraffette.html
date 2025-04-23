@@ -1,0 +1,186 @@
+class ClipProducer {
+    constructor(name, productionRatePerSecond) {
+      this.name = name; // Nome della fabbrica
+      this.productionRate = productionRatePerSecond; // Quante graffette produce al secondo
+      this.totalClips = 0; // Conteggio totale di graffette prodotte
+      this.running = false; // Stato della produzione
+      this._intervalId = null; // ID dell'intervallo per fermare la produzione
+    }
+  
+    startProduction() {
+      if (this.running) return;
+      this.running = true;
+      this._intervalId = setInterval(() => {
+        this.totalClips += this.productionRate;
+        console.log(`[${this.name}] Graffette totali: ${this.totalClips}`);
+      }, 1000);
+    }
+  
+    stopProduction() {
+      if (!this.running) return;
+      clearInterval(this._intervalId);
+      this._intervalId = null;
+      this.running = false;
+      console.log(`[${this.name}] Produzione fermata.`);
+    }
+  
+    resetProduction() {
+      this.totalClips = 0;
+      console.log(`[${this.name}] Conteggio graffette azzerato.`);
+    }
+  
+    status() {
+      return {
+        name: this.name,
+        running: this.running,
+        productionRate: this.productionRate,
+        totalClips: this.totalClips
+      };
+    }
+  
+    /// Metodo aggiuntivo: boostProduction
+    boostProduction(durationInSeconds, multiplier) {
+      if (!this.running) {
+        console.log(`[${this.name}] Impossibile eseguire il boost perché la produzione non è attiva.`);
+        return;
+      }
+      
+      console.log(`[${this.name}] Boost attivato: produzione aumentata di ${multiplier}x per ${durationInSeconds} secondi.`);
+      
+      // Salva il valore originale e aumenta la velocità
+      const originalRate = this.productionRate;
+      this.productionRate *= multiplier;
+      
+      // Dopo il periodo specificato, ripristina la velocità originale
+      setTimeout(() => {
+        this.productionRate = originalRate;
+        console.log(`[${this.name}] Fine del boost. Velocità di produzione ripristinata a ${this.productionRate} graffette al secondo.`);
+      }, durationInSeconds * 1000);
+    }
+  }
+  
+
+
+
+
+Interfaccia
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Fabbrica di Graffette</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .status {
+      margin-bottom: 1rem;
+    }
+
+    .clips-box {
+      max-height: 150px;
+      overflow-y: auto;
+      padding: 0.5rem;
+      background: #eef;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .clip {
+      background: #cce;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      margin-right: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .start { background-color: #4CAF50; color: white; }
+    .stop { background-color: #f44336; color: white; }
+    .reset { background-color: #999; color: white; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Fabbrica Virtuale di Graffette</h2>
+    <div class="status">
+      Stato: <span id="statusText">Fermata</span><br>
+      Totale Graffette: <span id="clipCount">0</span>
+    </div>
+
+    <div class="clips-box" id="clipsContainer"></div>
+
+    <button class="start" onclick="startProduction()">Avvia</button>
+    <button class="stop" onclick="stopProduction()">Ferma</button>
+    <button class="reset" onclick="resetProduction()">Reset</button>
+  </div>
+
+  <script>
+    let running = false;
+    let clips = [];
+    let intervalId = null;
+    const rate = 2; // clip al secondo
+
+    function updateUI() {
+      document.getElementById("clipCount").textContent = clips.length;
+      document.getElementById("statusText").textContent = running ? "Attiva" : "Fermata";
+
+      const container = document.getElementById("clipsContainer");
+      container.innerHTML = "";
+      clips.forEach(c => {
+        const el = document.createElement("div");
+        el.className = "clip";
+        el.textContent = c;
+        container.appendChild(el);
+      });
+    }
+
+    function startProduction() {
+      if (running) return;
+      running = true;
+      updateUI();
+      intervalId = setInterval(() => {
+        const newClips = Array.from({ length: rate }, (_, i) => `clip_${clips.length + i + 1}`);
+        clips = [...clips, ...newClips];
+        updateUI();
+      }, 1000);
+    }
+
+    function stopProduction() {
+      running = false;
+      clearInterval(intervalId);
+      updateUI();
+    }
+
+    function resetProduction() {
+      stopProduction();
+      clips = [];
+      updateUI();
+    }
+  </script>
+</body>
+</html>
+
+

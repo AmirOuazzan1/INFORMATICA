@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Gioco delle Carte - Reazione Rapida</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 30px;
+    }
+    #roundInfo {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    #game {
+      margin: 20px;
+    }
+    .card {
+      display: inline-block;
+      width: 80px;
+      height: 120px;
+      line-height: 120px;
+      border: 2px solid #000;
+      margin: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    .card:hover {
+      background-color: #f0f0f0;
+    }
+    .correct {
+      border-color: green;
+    }
+    .clicked {
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gioco delle Carte: Clicca il Numero Più Piccolo</h1>
+  <div id="roundInfo"></div>
+  <div id="game"></div>
+  <button id="start">Inizia il Round</button>
+  <div id="result" style="margin-top: 20px;"></div>
+
+  <script>
+    let startTime;
+    const reactionTimes = [];
+    let round = 0;
+    const totalRounds = 5; // modifica questo valore per avere più/fewer round
+
+    const startButton = document.getElementById("start");
+    const roundInfo = document.getElementById("roundInfo");
+    const gameDiv = document.getElementById("game");
+    const resultDiv = document.getElementById("result");
+
+    startButton.addEventListener("click", startRound);
+
+    function startRound() {
+      round++;
+      roundInfo.textContent = "Round " + round + " di " + totalRounds;
+      resultDiv.textContent = "";
+      gameDiv.innerHTML = ""; // pulisce il round precedente
+
+      // Genera 8 numeri casuali (da 1 a 100)
+      const numbers = [];
+      for (let i = 0; i < 8; i++) {
+        const num = Math.floor(Math.random() * 100) + 1;
+        numbers.push(num);
+      }
+      
+      // Individua il numero minimo
+      const minNumber = Math.min(...numbers);
+      console.log("Numero minimo: " + minNumber);
+
+      // Crea e mostra le "carte"
+      numbers.forEach(num => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.textContent = num;
+        card.dataset.number = num; // memorizza il numero nella carta
+
+        // Quando si clicca una carta...
+        card.addEventListener("click", function() {
+          // Impedisci doppi click controllando se una carta è già stata cliccata
+          if (document.querySelector(".card.clicked")) return;
+          
+          const reactionTime = performance.now() - startTime;
+          reactionTimes.push(reactionTime);
+          this.classList.add("clicked");
+
+          if (parseInt(this.dataset.number) === minNumber) {
+            this.classList.add("correct");
+            resultDiv.textContent = "Corretto! Tempo di reazione: " + reactionTime.toFixed(2) + " ms";
+          } else {
+            resultDiv.textContent = "Sbagliato! Tempo di reazione: " + reactionTime.toFixed(2) + " ms. Il numero più piccolo era " + minNumber;
+            // Evidenzia la carta corretta
+            document.querySelectorAll(".card").forEach(card => {
+              if (parseInt(card.dataset.number) === minNumber) {
+                card.classList.add("correct");
+              }
+            });
+          }
+          
+          // Disabilita ulteriori clic nel round
+          document.querySelectorAll(".card").forEach(card => card.style.pointerEvents = "none");
+
+          // Dopo un breve intervallo, passa al round successivo o mostra il riepilogo
+          setTimeout(() => {
+            if (round < totalRounds) {
+              startButton.disabled = false;
+            } else {
+              showFinalResults();
+            }
+          }, 1000);
+        });
+
+        gameDiv.appendChild(card);
+      });
+      
+      // Disabilita il tasto di start finché non finisce il round
+      startButton.disabled = true;
+      startTime = performance.now();
+    }
+
+    function showFinalResults() {
+      let finalResults = "Risultati finali:\n";
+      reactionTimes.forEach((time, index) => {
+        finalResults += "Round " + (index + 1) + ": " + time.toFixed(2) + " ms\n";
+      });
+      const avgTime = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length;
+      finalResults += "Tempo medio: " + avgTime.toFixed(2) + " ms";
+      resultDiv.textContent = finalResults;
+      startButton.disabled = true;
+      roundInfo.textContent = "Gioco terminato!";
+    }
+  </script>
+</body>
+</html>

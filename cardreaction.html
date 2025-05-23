@@ -37,6 +37,12 @@
     .clicked {
       pointer-events: none;
     }
+    #downloadJson {
+      margin-top: 20px;
+      padding: 8px 16px;
+      font-size: 16px;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -45,47 +51,56 @@
   <div id="game"></div>
   <button id="start">Inizia il Round</button>
   <div id="result" style="margin-top: 20px;"></div>
+  <button id="downloadJson">Scarica Risultati JSON</button>
 
   <script>
+
+    let userName = prompt("Inserisci il tuo nome:");
+    if (!userName) {
+      userName = "Giocatore";
+    }
+  
+    const header = document.querySelector("h1");
+    header.textContent += " - Ciao " + userName + "!";
+
     let startTime;
     const reactionTimes = [];
     let round = 0;
-    const totalRounds = 5; // modifica questo valore per avere più/fewer round
+    const totalRounds = 5; 
 
     const startButton = document.getElementById("start");
     const roundInfo = document.getElementById("roundInfo");
     const gameDiv = document.getElementById("game");
     const resultDiv = document.getElementById("result");
+    const downloadJsonButton = document.getElementById("downloadJson");
 
     startButton.addEventListener("click", startRound);
+    downloadJsonButton.addEventListener("click", downloadResults);
 
     function startRound() {
       round++;
       roundInfo.textContent = "Round " + round + " di " + totalRounds;
       resultDiv.textContent = "";
-      gameDiv.innerHTML = ""; // pulisce il round precedente
+      gameDiv.innerHTML = ""; 
 
-      // Genera 8 numeri casuali (da 1 a 100)
+      downloadJsonButton.style.display = "none";
+
       const numbers = [];
       for (let i = 0; i < 8; i++) {
         const num = Math.floor(Math.random() * 100) + 1;
         numbers.push(num);
       }
       
-      // Individua il numero minimo
       const minNumber = Math.min(...numbers);
       console.log("Numero minimo: " + minNumber);
 
-      // Crea e mostra le "carte"
       numbers.forEach(num => {
         const card = document.createElement("div");
         card.classList.add("card");
         card.textContent = num;
-        card.dataset.number = num; // memorizza il numero nella carta
+        card.dataset.number = num; 
 
-        // Quando si clicca una carta...
         card.addEventListener("click", function() {
-          // Impedisci doppi click controllando se una carta è già stata cliccata
           if (document.querySelector(".card.clicked")) return;
           
           const reactionTime = performance.now() - startTime;
@@ -97,7 +112,7 @@
             resultDiv.textContent = "Corretto! Tempo di reazione: " + reactionTime.toFixed(2) + " ms";
           } else {
             resultDiv.textContent = "Sbagliato! Tempo di reazione: " + reactionTime.toFixed(2) + " ms. Il numero più piccolo era " + minNumber;
-            // Evidenzia la carta corretta
+            
             document.querySelectorAll(".card").forEach(card => {
               if (parseInt(card.dataset.number) === minNumber) {
                 card.classList.add("correct");
@@ -105,10 +120,8 @@
             });
           }
           
-          // Disabilita ulteriori clic nel round
           document.querySelectorAll(".card").forEach(card => card.style.pointerEvents = "none");
 
-          // Dopo un breve intervallo, passa al round successivo o mostra il riepilogo
           setTimeout(() => {
             if (round < totalRounds) {
               startButton.disabled = false;
@@ -121,7 +134,6 @@
         gameDiv.appendChild(card);
       });
       
-      // Disabilita il tasto di start finché non finisce il round
       startButton.disabled = true;
       startTime = performance.now();
     }
@@ -136,6 +148,26 @@
       resultDiv.textContent = finalResults;
       startButton.disabled = true;
       roundInfo.textContent = "Gioco terminato!";
+
+      downloadJsonButton.style.display = "inline-block";
+    }
+
+    function downloadResults() {
+      const avgTime = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length;
+      const results = {
+        reactionTimes: reactionTimes.map(time => parseFloat(time.toFixed(2))),
+        averageTime: parseFloat(avgTime.toFixed(2))
+      };
+      const jsonString = JSON.stringify(results, null, 2);
+      const blob = new Blob([jsonString], {type: "application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "risultati.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     }
   </script>
 </body>

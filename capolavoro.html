@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capolavoro: GIGROBO - Amir Ouazzani Tayibi</title>
+  <!-- Import dei font da Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /* Corpo della pagina */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #003f5c, #005792);
+      color: #fff;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+    }
+    /* Header */
+    header {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+    header h2 {
+      font-size: 1.5em;
+      font-weight: normal;
+    }
+    /* Contenitore delle slide */
+    .slides-container {
+      position: relative;
+      width: 95%;
+      max-width: 1000px;
+      height: calc(100vh - 140px);
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+    /* Stile per ogni slide */
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      overflow-y: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .slide.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .slide h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    .slide p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+    /* Stile per l'immagine e il video inseriti */
+    .slide img, .slide video {
+      display: block;
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 20px auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    /* Pulsanti di navigazione */
+    .nav-buttons {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+    }
+    .nav-buttons button {
+      background: #fff;
+      color: #333;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .nav-buttons button:hover {
+      background: #ddd;
+      transform: scale(1.05);
+    }
+    /* Animazione fade-in */
+    .fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header della presentazione -->
+  <header>
+    <h1>Capolavoro: GIGROBO</h1>
+    <h2>Amir Ouazzani Tayibi</h2>
+  </header>
+  
+  <!-- Contenitore delle slide -->
+  <div class="slides-container">
+    <!-- Slide 1: Introduzione -->
+    <section class="slide active" id="slide1">
+      <h3 class="fade-in">Di cosa parlerò</h3>
+      <p class="fade-in">
+        Questa presentazione vi accompagnerà nella mia esperienza con GIGROBO, il percorso PCTO del Politecnico di Torino che mi ha permesso di immergermi nel mondo della robotica in modo pratico e divertente.
+      </p>
+      <p class="fade-in">
+        Scoprirete come ho imparato le basi della robotica, come ho messo in pratica le conoscenze acquisite e in che modo questo progetto ha accresciuto le mie competenze tecniche e collaborative.
+      </p>
+      <!-- Immagine già presente -->
+      <img src="https://amirouazzan1.github.io/INFORMATICA/pli.png" alt="Esperienza GIGROBO" class="fade-in">
+    </section>
+    
+    <!-- Slide 2: Introduzione e Contesto -->
+    <section class="slide" id="slide2">
+      <h3 class="fade-in">Introduzione e Contesto</h3>
+      <p class="fade-in">
+        Fin dall'inizio, GIGROBO si è rivelato molto più di un semplice corso di robotica: è stata una finestra sul mondo della tecnologia, dove la teoria si è trasformata in esperienza pratica. L'opportunità di lavorare a stretto contatto con strumenti moderni e ragazzi interessati alla materia mi ha permesso di sperimentare nuove metodologie di apprendimento.
+      </p>
+      <p class="fade-in">
+        In un ambiente dinamico e stimolante, ho imparato a coniugare le conoscenze teoriche con le applicazioni reali, rendendo l'apprendimento un’esperienza completa ma anche divertente.
+      </p>
+    </section>
+    
+    <!-- Slide 3: Le Fasi del Programma -->
+    <section class="slide" id="slide3">
+      <h3 class="fade-in">Le Fasi del Programma: IMPARO, FACCIO e MOSTRO</h3>
+      <p class="fade-in">
+        Nella fase <strong>IMPARO</strong>, ho approfondito i principi fondamentali della robotica, studiando il funzionamento di dispositivi moderni come droni e robot umanoidi. Lavorare con Arduino e componenti elettronici mi ha permesso di comprendere come semplici comandi possano tradursi in azioni complesse.
+      </p>
+      <p class="fade-in">
+        La fase <strong>FACCIO</strong> ha rappresentato il cuore creativo del percorso: in team, abbiamo progettato e realizzato sistemi robotici funzionali, affrontando sfide tecniche e trovando soluzioni innovative per applicazioni quotidiane.
+      </p>
+      <p class="fade-in">
+        Nella fase <strong>MOSTRO</strong>, il risultato ha preso forma: un braccio robotico controllato da una tastiera capacitiva, simbolo dell’impegno e della determinazione messi in campo.
+      </p>
+    </section>
+    
+    <!-- Slide 4: Approfondimenti Tecnici -->
+    <section class="slide" id="slide4">
+      <h3 class="fade-in">Approfondimenti Tecnici</h3>
+      <p class="fade-in">
+        Durante GIGROBO ho avuto modo di sperimentare direttamente con microcontrollori, sensori e circuiti elettronici, approfondendo le tecnologie che animano il mondo della robotica. Lavorare con Arduino mi ha insegnato a leggere schemi elettrici, programmare logiche complesse e sviluppare interfacce interattive.
+      </p>
+      <p class="fade-in">
+        L'approccio hands-on ha migliorato le mie capacità analitiche e di problem solving, dimostrando come la pratica e la collaborazione possano trasformare le sfide in opportunità di innovazione.
+      </p>
+    </section>
+    
+    <!-- Slide 5: Coding con Arduino -->
+    <section class="slide" id="slide5">
+      <h3 class="fade-in">Coding con Arduino</h3>
+      <p class="fade-in">
+        In questa sezione analizziamo il codice utilizzato per programmare il braccio robotico. Il codice, scritto in C++ e sviluppato nell'ambiente Arduino IDE, sfrutta la libreria Braccio per gestire i servomotori e leggere lo stato di un pulsante.
+      </p>
+      <p class="fade-in">
+        Questo esempio dimostra come comandi semplici possano tradursi in movimenti complessi, integrando logica e interattività in un progetto concreto.
+      </p>
+      <img src="https://amirouazzan1.github.io/INFORMATICA/coding.jpg" alt="Codice Arduino per il Braccio Robotico" class="fade-in">
+    </section>
+    
+    <!-- Slide 6: Risultati e Impatti -->
+    <section class="slide" id="slide6">
+      <h3 class="fade-in">Risultati e Impatti</h3>
+      <p class="fade-in">
+        Durante il percorso GIGROBO, il progetto ha prodotto risultati concreti che vanno oltre la semplice realizzazione tecnica. L'esperienza ha migliorato le dinamiche di apprendimento e ha evidenziato il valore della collaborazione nella risoluzione dei problemi.
+      </p>
+      <p class="fade-in">
+        I test pratici hanno dimostrato l'efficacia delle soluzioni implementate, confermando il potenziale della robotica applicata a scenari reali. Il feedback positivo degli altri studenti ha sottolineato come l'esperienza abbia realmente fatto la differenza.
+      </p>
+      <p class="fade-in">
+        Questi risultati rafforzano la convinzione che la combinazione di teoria, pratica e creatività non solo migliora le competenze tecniche, ma apre nuove prospettive per l'innovazione.
+      </p>
+    </section>
+    
+    <!-- Slide 7: Conclusioni e Riflessioni -->
+    <section class="slide" id="slide7">
+      <h3 class="fade-in">Conclusioni e Riflessioni</h3>
+      <p class="fade-in">
+        L’esperienza GIGROBO ha trasformato il mio modo di vedere la tecnologia: la fusione tra teoria e pratica è essenziale per ottenere risultati concreti. Ogni fase – dalla scoperta alle applicazioni pratiche – ha contribuito a formare una solida esperienza e determinazione per il mio futuro.
+      </p>
+      <p class="fade-in">
+        Le sfide affrontate e i successi ottenuti mi hanno reso più resiliente e aperto a nuove opportunità, spingendomi a esplorare ulteriori campi di applicazione della robotica nella vita quotidiana.
+      </p>
+      <p class="fade-in">
+        Grazie a GIGROBO, ho compreso che con passione, impegno e collaborazione si possono trasformare idee in soluzioni reali e innovative.
+      </p>
+    </section>
+    
+    <!-- Slide 8: Risultato finale del progetto -->
+    <section class="slide" id="slide8">
+      <h3 class="fade-in">Risultato finale del progetto</h3>
+      <p class="fade-in">
+        Ecco il risultato finale: in questo video potete vedere il funzionamento del braccio robotico
+      </p>
+      <video class="fade-in" controls width="30%">
+        <source src="https://amirouazzan1.github.io/INFORMATICA/viddimostrativo.mp4" type="video/mp4">
+        Il tuo browser non supporta il formato video.
+      </video>
+    </section>
+    
+    <!-- Pulsanti di navigazione -->
+    <div class="nav-buttons">
+      <button id="prevBtn">&larr; Precedente</button>
+      <button id="nextBtn">Successivo &rarr;</button>
+    </div>
+  </div>
+  
+  <!-- JavaScript per la navigazione tra slide -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      if (index < 0 || index >= slides.length) return;
+      slides[currentSlide].classList.remove('active');
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      if (currentSlide < slides.length - 1) {
+        showSlide(currentSlide + 1);
+      }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      if (currentSlide > 0) {
+        showSlide(currentSlide - 1);
+      }
+    });
+
+    // Navigazione tramite frecce della tastiera
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+        showSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+        showSlide(currentSlide - 1);
+      }
+    });
+  </script>
+</body>
+</html>

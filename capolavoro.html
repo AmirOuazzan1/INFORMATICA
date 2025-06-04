@@ -139,14 +139,13 @@
   <div class="slides-container">
     <!-- Slide 1: Introduzione -->
     <section class="slide active" id="slide1">
-      <h3 class="fade-in">Di cosa parlerò</h3>
+      <h3 class="fade-in">Di cosa parleremo</h3>
       <p class="fade-in">
         Questa presentazione vi accompagnerà nella mia esperienza con GIGROBO, il percorso PCTO del Politecnico di Torino che mi ha permesso di immergermi nel mondo della robotica in modo pratico e divertente.
       </p>
       <p class="fade-in">
-        Scoprirete come ho imparato le basi della robotica, come ho messo in pratica le conoscenze acquisite e in che modo questo progetto ha accresciuto le mie competenze tecniche e collaborative.
+        Scoprirete come ho imparato i fondamenti della robotica, come ho messo in pratica le conoscenze acquisite e in che modo questo progetto ha accresciuto le mie competenze tecniche e collaborative.
       </p>
-      <!-- Immagine già presente -->
       <img src="https://amirouazzan1.github.io/INFORMATICA/pli.png" alt="Esperienza GIGROBO" class="fade-in">
     </section>
     
@@ -154,10 +153,10 @@
     <section class="slide" id="slide2">
       <h3 class="fade-in">Introduzione e Contesto</h3>
       <p class="fade-in">
-        Fin dall'inizio, GIGROBO si è rivelato molto più di un semplice corso di robotica: è stata una finestra sul mondo della tecnologia, dove la teoria si è trasformata in esperienza pratica. L'opportunità di lavorare a stretto contatto con strumenti moderni e ragazzi interessati alla materia mi ha permesso di sperimentare nuove metodologie di apprendimento.
+        Fin dall'inizio, GIGROBO si è rivelato molto più di un semplice corso di robotica: è stata una finestra sul mondo della tecnologia, dove la teoria si è trasformata in esperienza pratica. L'opportunità di lavorare a stretto contatto con strumenti moderni e colleghi appassionati mi ha permesso di sperimentare nuove metodologie di apprendimento.
       </p>
       <p class="fade-in">
-        In un ambiente dinamico e stimolante, ho imparato a coniugare le conoscenze teoriche con le applicazioni reali, rendendo l'apprendimento un’esperienza completa ma anche divertente.
+        In un ambiente dinamico e stimolante, ho imparato a coniugare le conoscenze teoriche con le applicazioni reali, rendendo l'apprendimento un’esperienza completa e integrata.
       </p>
     </section>
     
@@ -212,8 +211,20 @@
       </p>
     </section>
     
-    <!-- Slide 7: Conclusioni e Riflessioni -->
+    <!-- Slide 7: Risultato finale del progetto (Video) -->
     <section class="slide" id="slide7">
+      <h3 class="fade-in">Risultato finale del progetto</h3>
+      <p class="fade-in">
+        Ecco il risultato finale: un video che mostra il braccio robotico in azione e l'intero sistema al lavoro. Guardate il video per vedere come teoria e pratica si uniscono in questo innovativo progetto che simula il braccio robotico utlizzato in discarica per lo spostameto di oggetti pesanti.
+      </p>
+      <video class="fade-in" controls width="30%">
+        <source src="https://amirouazzan1.github.io/INFORMATICA/viddimostrativo.mp4" type="video/mp4">
+        Il tuo browser non supporta il formato video.
+      </video>
+    </section>
+    
+    <!-- Slide 8: Conclusioni e Riflessioni (Ultima slide) -->
+    <section class="slide" id="slide8">
       <h3 class="fade-in">Conclusioni e Riflessioni</h3>
       <p class="fade-in">
         L’esperienza GIGROBO ha trasformato il mio modo di vedere la tecnologia: la fusione tra teoria e pratica è essenziale per ottenere risultati concreti. Ogni fase – dalla scoperta alle applicazioni pratiche – ha contribuito a formare una solida esperienza e determinazione per il mio futuro.
@@ -224,18 +235,6 @@
       <p class="fade-in">
         Grazie a GIGROBO, ho compreso che con passione, impegno e collaborazione si possono trasformare idee in soluzioni reali e innovative.
       </p>
-    </section>
-    
-    <!-- Slide 8: Risultato finale del progetto -->
-    <section class="slide" id="slide8">
-      <h3 class="fade-in">Risultato finale del progetto</h3>
-      <p class="fade-in">
-        Ecco il risultato finale: in questo video potete vedere il funzionamento del braccio robotico
-      </p>
-      <video class="fade-in" controls width="30%">
-        <source src="https://amirouazzan1.github.io/INFORMATICA/viddimostrativo.mp4" type="video/mp4">
-        Il tuo browser non supporta il formato video.
-      </video>
     </section>
     
     <!-- Pulsanti di navigazione -->
@@ -269,7 +268,7 @@
       }
     });
 
-    // Navigazione tramite frecce della tastiera
+    // Navigazione tramite le frecce della tastiera
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
         showSlide(currentSlide + 1);

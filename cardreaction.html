@@ -43,6 +43,13 @@
       font-size: 16px;
       display: none;
     }
+ 
+    .continue-btn {
+      margin: 5px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -53,18 +60,20 @@
   <div id="result" style="margin-top: 20px;"></div>
   <button id="downloadJson">Scarica Risultati JSON</button>
 
-  <script>
+  <div id="continueContainer" style="margin-top: 20px;"></div>
 
+  <script>
+   
     let userName = prompt("Inserisci il tuo nome:");
     if (!userName) {
       userName = "Giocatore";
     }
-  
+
     const header = document.querySelector("h1");
     header.textContent += " - Ciao " + userName + "!";
 
     let startTime;
-    const reactionTimes = [];
+    let reactionTimes = [];
     let round = 0;
     const totalRounds = 5; 
 
@@ -73,11 +82,15 @@
     const gameDiv = document.getElementById("game");
     const resultDiv = document.getElementById("result");
     const downloadJsonButton = document.getElementById("downloadJson");
+    const continueContainer = document.getElementById("continueContainer");
 
     startButton.addEventListener("click", startRound);
     downloadJsonButton.addEventListener("click", downloadResults);
 
     function startRound() {
+
+      continueContainer.innerHTML = "";
+
       round++;
       roundInfo.textContent = "Round " + round + " di " + totalRounds;
       resultDiv.textContent = "";
@@ -146,15 +159,50 @@
       const avgTime = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length;
       finalResults += "Tempo medio: " + avgTime.toFixed(2) + " ms";
       resultDiv.textContent = finalResults;
-      startButton.disabled = true;
       roundInfo.textContent = "Gioco terminato!";
+      startButton.disabled = true;
 
       downloadJsonButton.style.display = "inline-block";
+      
+    
+      const continueOptions = ["Si", "No"];
+      continueContainer.innerHTML = "<p>Vuoi continuare?</p>";
+
+
+      continueOptions.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.classList.add("continue-btn");
+        btn.addEventListener("click", function() {
+          handleContinuation(option);
+        });
+        continueContainer.appendChild(btn);
+      });
+    }
+
+    function handleContinuation(option) {
+      if (option.toLowerCase() === "si") {
+
+        reactionTimes = [];
+        round = 0;
+        resultDiv.textContent = "";
+        roundInfo.textContent = "";
+        gameDiv.innerHTML = "";
+        downloadJsonButton.style.display = "none";
+        continueContainer.innerHTML = "";
+        startButton.disabled = false;
+      } else if (option.toLowerCase() === "no") {
+  
+        resultDiv.textContent += "\nGrazie per aver giocato!";
+        continueContainer.innerHTML = "";
+      }
     }
 
     function downloadResults() {
       const avgTime = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length;
+
       const results = {
+        userName: userName,
         reactionTimes: reactionTimes.map(time => parseFloat(time.toFixed(2))),
         averageTime: parseFloat(avgTime.toFixed(2))
       };
